@@ -28,6 +28,13 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
+      //Material UI
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: ["@mui/*/*/*"],
+        },
+      ],
     },
   },
 ];
