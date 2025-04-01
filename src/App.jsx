@@ -1,11 +1,15 @@
 import Button from "@mui/material/Button";
 import { pink } from "@mui/material/colors";
 import HomeIcon from "@mui/icons-material/Home";
+import Typography from "@mui/material/Typography";
 
 function App() {
   return (
     <>
       <div>phamvanphuc</div>
+      <Typography variant="body2" color="text.secondary">
+        Test
+      </Typography>
       <Button variant="contained">Hello world</Button>
       <HomeIcon />
       <HomeIcon color="primary" />
