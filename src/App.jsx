@@ -1,24 +1,41 @@
 import Button from "@mui/material/Button";
-import { pink } from "@mui/material/colors";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
+import { useColorScheme } from "@mui/material/styles";
+
+function ModeToggle() {
+  const { mode, setMode } = useColorScheme();
+
+  return (
+    <Button
+      variant="contained"
+      onClick={() => {
+        setMode(mode === "light" ? "dark" : "light");
+      }}
+    >
+      {mode === "light" ? "Turn dark" : "Turn light"} (Current: {mode})
+    </Button>
+  );
+}
 
 function App() {
   return (
-    <>
-      <div>phamvanphuc</div>
-      <Typography variant="body2" color="text.secondary">
-        Test
-      </Typography>
-      <Button variant="contained">Hello world</Button>
-      <HomeIcon />
-      <HomeIcon color="primary" />
-      <HomeIcon color="secondary" />
-      <HomeIcon color="success" />
-      <HomeIcon color="action" />
-      <HomeIcon color="disabled" />
-      <HomeIcon sx={{ color: pink[500] }} />
-    </>
+    <div style={{ padding: 20 }}>
+      <ModeToggle />
+      <hr />
+      <Typography variant="h6">Current Mode Demo</Typography>
+      <Button variant="contained" color="primary">
+        Primary Button
+      </Button>
+      <Button variant="contained" color="secondary" sx={{ ml: 2 }}>
+        Secondary Button
+      </Button>
+      <div style={{ marginTop: 20 }}>
+        <HomeIcon fontSize="large" />
+        <HomeIcon color="primary" fontSize="large" sx={{ ml: 2 }} />
+        <HomeIcon color="secondary" fontSize="large" sx={{ ml: 2 }} />
+      </div>
+    </div>
   );
 }
 
