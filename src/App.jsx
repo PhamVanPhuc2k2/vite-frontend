@@ -1,6 +1,3 @@
-import Button from "@mui/material/Button";
-import HomeIcon from "@mui/icons-material/Home";
-import Typography from "@mui/material/Typography";
 import { useColorScheme } from "@mui/material/styles";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,6 +7,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 //
 
 function ModeSelect() {
@@ -50,44 +48,48 @@ function ModeSelect() {
   );
 }
 
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme();
-  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme:dark)");
-  // const prefersLightMode = useMediaQuery("(prefers-color-scheme:light)");
-  // console.log("prefersDarkMode: ", prefersDarkMode);
-  // console.log("prefersLightMode: ", prefersLightMode);
-  return (
-    <Button
-      variant="contained"
-      onClick={() => {
-        setMode(mode === "light" ? "dark" : "light");
-      }}
-    >
-      {mode === "light" ? "Turn dark" : "Turn light"} (Current: {mode})
-    </Button>
-  );
-}
-
 function App() {
   return (
-    <div style={{ padding: 20 }}>
-      <ModeSelect />
-      <hr />
-      <ModeToggle />
-      <hr />
-      <Typography variant="h6">Current Mode Demo</Typography>
-      <Button variant="contained" color="primary">
-        Primary Button
-      </Button>
-      <Button variant="contained" color="secondary" sx={{ ml: 2 }}>
-        Secondary Button
-      </Button>
-      <div style={{ marginTop: 20 }}>
-        <HomeIcon fontSize="large" />
-        <HomeIcon color="primary" fontSize="large" sx={{ ml: 2 }} />
-        <HomeIcon color="secondary" fontSize="large" sx={{ ml: 2 }} />
-      </div>
-    </div>
+    <Container
+      disableGutters
+      maxWidth={false}
+      sx={{ height: "100vh", backgroundColor: "primary.main" }}
+    >
+      <Box
+        sx={{
+          backgroundColor: "primary.light",
+          width: "100%",
+          height: (theme) => theme.trello.appBarHeight,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ModeSelect />
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: "primary.dark",
+          width: "100%",
+          height: (theme) => theme.trello.boardBarHeight,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        Board bar
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          width: "100%",
+          height: (theme) =>
+            `calc(100vh - ${theme.trello.appBarHeight} - ${theme.trello.boardBarHeight})`,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        Board contents
+      </Box>
+    </Container>
   );
 }
 
